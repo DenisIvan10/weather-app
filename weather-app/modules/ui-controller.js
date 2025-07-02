@@ -13,7 +13,9 @@ export const elements = {
   wind: document.querySelector('#wind'),
   visibility: document.querySelector('#visibility'),
   sunrise: document.querySelector('#sunrise'),
-  sunset: document.querySelector('#sunset')
+  sunset: document.querySelector('#sunset'),
+  unitSelect: document.querySelector('#unit-select'),
+  langSelect: document.querySelector('#lang-select')
 };
 
 export const showLoading = () => {
@@ -32,9 +34,10 @@ export const showError = (message) => {
   elements.weatherDisplay.classList.add('hidden');
 };
 
-export const displayWeather = (data) => {
+export const displayWeather = (data, unit) => {
+  const symbol = unit === 'imperial' ? '°F' : '°C';
   elements.cityName.textContent = data.name;
-  elements.temperature.textContent = `${data.main.temp}°C`;
+  elements.temperature.textContent = `${Math.round(data.main.temp)}${symbol}`;
   elements.weatherDescription.textContent = data.weather[0].description;
   elements.weatherIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="${data.weather[0].description}" />`;
   elements.humidity.textContent = `${data.main.humidity}%`;
@@ -58,3 +61,13 @@ const formatTime = (timestamp) => {
     minute: '2-digit'
   });
 };
+
+export const saveUserPreferences = (unit, lang) => {
+  localStorage.setItem('preferredUnit', unit);
+  localStorage.setItem('preferredLang', lang);
+};
+
+export const loadUserPreferences = () => ({
+  unit: localStorage.getItem('preferredUnit') || 'metric',
+  lang: localStorage.getItem('preferredLang') || 'ro'
+});

@@ -17,6 +17,26 @@
     </header>
 
     <main>
+      <div class="controls">
+        <div class="control-group">
+          <label for="unit-select">Unitatea temperaturii:</label>
+          <select id="unit-select">
+            <option value="metric" selected>°C (Metric)</option>
+            <option value="imperial">°F (Imperial)</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label for="lang-select">Limba descrierilor:</label>
+          <select id="lang-select">
+            <option value="ro" selected>Română</option>
+            <option value="en">Engleză</option>
+            <option value="fr">Franceză</option>
+            <option value="de">Germană</option>
+            <option value="es">Spaniolă</option>
+          </select>
+        </div>
+      </div>
+
       <div id="loading" class="hidden">Se încarcă...</div>
       <div id="error" class="hidden"></div>
       
