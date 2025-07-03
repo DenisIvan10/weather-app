@@ -1,17 +1,31 @@
 // modules/config.js
 
 export const CONFIG = {
-  API_KEY: 'your_api_key_here', // Înlocuiește cu cheia reală dacă ai una
+  API_KEY: 'your_api_key_here', // Înlocuiește cu cheia reală
   API_BASE_URL: 'https://api.openweathermap.org/data/2.5',
-  DEFAULT_UNITS: 'metric', // sau 'imperial'
+  DEFAULT_UNITS: 'metric', // 'metric' sau 'imperial'
   DEFAULT_LANG: 'ro', // 'ro', 'en', 'fr', etc.
-  DEFAULT_CITY: 'București', // opțional
+  DEFAULT_CITY: 'București',
+
+  // ✅ Nou: Istoric și preferințe
+  MAX_HISTORY_ITEMS: 10,
+  STORAGE_KEYS: {
+    SEARCH_HISTORY: 'weather_search_history',
+    USER_PREFERENCES: 'weather_user_prefs',
+  },
+
+  // ✅ Nou: Logging controlat
+  LOGGING: {
+    ENABLED: true,
+    LEVEL: 'info', // 'debug', 'info', 'warn', 'error'
+    MAX_LOGS: 100,
+  }
 };
 
 export const API_ENDPOINTS = {
-  CURRENT_WEATHER: '/weather', // exemplu complet: /weather?q=Cluj&appid=...
+  CURRENT_WEATHER: '/weather',
   FORECAST: '/forecast',
-  ONE_CALL: '/onecall', // pt. date meteo combinate
+  ONE_CALL: '/onecall',
 };
 
 export const ERROR_MESSAGES = {
